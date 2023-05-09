@@ -28,7 +28,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Jugador" package="Entidades" visibility="public" xPosition="620.0" yPosition="20.0">
+    <Class name="Jugador" package="Entidades" visibility="public" xPosition="151.0" yPosition="405.0">
       <Fields>
         <Field name="id" type="int" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -57,7 +57,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Revolver" package="Entidades" visibility="public" xPosition="920.0" yPosition="20.0">
+    <Class name="Revolver" package="Entidades" visibility="public" xPosition="708.0" yPosition="239.0">
       <Fields>
         <Field name="posicionActual" type="int" visibility="private"/>
         <Field name="posicionAgua" type="int" visibility="private"/>
@@ -77,7 +77,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="JuegoServicio" package="Servicios" visibility="public" xPosition="1220.0" yPosition="20.0">
+    <Class name="JuegoServicio" package="Servicios" visibility="public" xPosition="732.0" yPosition="20.0">
       <Fields>
         <Field name="ronda" type="int" visibility="private"/>
       </Fields>
@@ -95,7 +95,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="JugadorServicio" package="Servicios" visibility="public" xPosition="1520.0" yPosition="20.0">
+    <Class name="JugadorServicio" package="Servicios" visibility="public" xPosition="429.0" yPosition="546.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -105,7 +105,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="RevolverServicio" package="Servicios" visibility="public" xPosition="1820.0" yPosition="20.0">
+    <Class name="RevolverServicio" package="Servicios" visibility="public" xPosition="779.0" yPosition="600.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -120,13 +120,13 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="Entidades.Juego" target="Entidades.Revolver" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jugadores" source="Entidades.Juego" target="Entidades.Jugador" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Jugador&gt;"/>
+    <UseRelation source="Servicios.RevolverServicio" target="Entidades.Revolver" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="Servicios.JuegoServicio" target="Entidades.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="Servicios.JuegoServicio" target="Entidades.Revolver" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="r" source="Entidades.Juego" target="Entidades.Revolver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="Servicios.RevolverServicio" target="Entidades.Revolver" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="jugadores" source="Entidades.Juego" target="Entidades.Jugador" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Jugador&gt;"/>
-    <UseRelation source="Entidades.Juego" target="Entidades.Jugador" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Entidades.Juego" target="Entidades.Revolver" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="Servicios.JugadorServicio" target="Entidades.Revolver" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Entidades.Juego" target="Entidades.Jugador" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

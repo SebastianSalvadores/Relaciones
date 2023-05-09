@@ -44,9 +44,9 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="raza" source="Entidades.Perro" target="Enumeracion.Raza" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="Entidades.Persona" target="Entidades.Perro" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="perro" source="Entidades.Persona" target="Entidades.Perro" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="Entidades.Perro" target="Enumeracion.Raza" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="raza" source="Entidades.Perro" target="Enumeracion.Raza" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="perro" source="Entidades.Persona" target="Entidades.Perro" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Entidades.Persona" target="Entidades.Perro" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
