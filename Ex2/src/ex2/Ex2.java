@@ -68,7 +68,7 @@ public class Ex2 {
                 do {                
                     int j = (int)(Math.random() * 8);
                     int k = (int)(Math.random() * 6);
-                    if(cine.getSala()[j][k] == false){
+                    if(cine.getSala()[j][k] == false){ //if el asiento esta desocupado
                         cine.getSala()[j][k] = true;
                         bandera = true;
                     } 
@@ -76,11 +76,11 @@ public class Ex2 {
             }
             
             bandera = false;
-            System.out.println(espectador.toString());
+            //System.out.println(espectador.toString());
         }
         
         
-        
+        //Para mostrar la sala del cine
         for (int i = 7; i >= 0; i--) {
             for (int j = 0; j < 6; j++) {
                 System.out.print((i+1)+" ");

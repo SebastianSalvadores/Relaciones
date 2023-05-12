@@ -51,8 +51,8 @@ public class EspectadorServicio {
     }
     public Espectador crearEspectadorAleatorio(){
         String nombre = Nombres.values()[(int)(Math.random()*14)].toString();
-        int edad = (int)(Math.random() * 40);
-        double dineroDisponible = Math.random() * 5000;
+        int edad = (int)(Math.random() * 70);
+        double dineroDisponible = Math.random() * 10000;
         return new Espectador(nombre,edad, dineroDisponible);
     }
 }
