@@ -1,6 +1,6 @@
 /*
 Ha llegado el momento de poner de prueba tus conocimientos. Para te vamos a contar que te
-ha contratado “La Tercera Seguros”, una empresa aseguradora que brinda a sus clientes
+ha contratado La Tercera Seguros, una empresa aseguradora que brinda a sus clientes
 coberturas integrales para vehículos.
 
 Luego de un pequeño relevamiento, te vamos a pasar en limpio los requerimientos del sistema
@@ -29,7 +29,6 @@ relaciones.
  */
 package ex3;
 
-import Entidades.Cliente;
 import Entidades.Cuotas;
 import Entidades.Poliza;
 import Servicios.CuotasServicio;
