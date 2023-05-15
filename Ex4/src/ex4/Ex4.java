@@ -44,9 +44,8 @@ package ex4;
 
 import Entidades.Alumno;
 import Entidades.Simulador;
+import Entidades.Voto;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Scanner;
 
 /**
@@ -61,7 +60,7 @@ public class Ex4 {
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         ArrayList<String> nombres = Simulador.generarNombres();
-        HashMap<Alumno,HashSet<Alumno>> votosAlumnos;
+        ArrayList<Voto> votosAlumnos;
         System.out.println("Ingrese la cantidad de alumnos a crear:");
         int n = leer.nextInt();
         ArrayList<Long> dnis = Simulador.generarDnis(n);

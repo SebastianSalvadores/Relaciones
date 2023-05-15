@@ -44,9 +44,7 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 
 /**
  *
@@ -63,7 +61,7 @@ public class Simulador {
         ArrayList<String> apellidos = new ArrayList<>(Arrays.asList("Martinez", "Garcia", "Gonzalez", "Rossi", "Costa", "Estevez", "Echenique", "Ramirez", "Sarmiento", "Moreno", "Muller"));
         ArrayList<String> nombresCompletos = new ArrayList<>();
         int num1, num2;
-        for (int i = 0; i < 100; i++) { //elegi 100, porque segun consigna, no importa si se repiten nombres, podrian haber sido menos.
+        for (int i = 0; i < 100; i++) { //elegi 100, porque segun consigna, no importa si se repiten nombres, podrian haber sido menos o mas.
             num1 = (int) (Math.random() * nombres.size());
             num2 = (int) (Math.random() * apellidos.size());
             String nombreGenerado = nombres.get(num1) + " " + apellidos.get(num2);
@@ -101,20 +99,23 @@ public class Simulador {
             System.out.println(alumno);
         }
     }
-
-    public static HashMap<Alumno, HashSet<Alumno>> votacion(ArrayList<Alumno> alumnos) {
-        HashMap<Alumno, HashSet<Alumno>> votosAlumno = new HashMap<>();
+    
+    public static ArrayList<Voto> votacion(ArrayList<Alumno> alumnos) {
+        ArrayList<Voto> votosAlumno = new ArrayList<>();
         HashSet<Alumno> alumnosVotados;
         boolean bandera = false;
         int votos;
         for (Alumno alumno : alumnos) {
+            Voto voto = new Voto();
+            ArrayList<Alumno> listaVotos;
             alumnosVotados = new HashSet<>();
-            alumnosVotados.add(alumno); //para evitar que se vote a si mismo. En linea 128 se corrige.
+            voto.setAlumno(alumno);
+            alumnosVotados.add(alumno); //para evitar que se vote a si mismo. En linea 127 se lo borra del conjunto.
             for (int i = 0; i < 3; i++) {
                 do {
                     int aleatorio = (int) (Math.random() * alumnos.size());
                     alumnosVotados.add(alumnos.get(aleatorio));
-                    if(alumnosVotados.size() - 1 == i + 1){ //Al .size() se le resta 1 (ver linea 112)
+                    if(alumnosVotados.size() - 1 == i + 1){ //Al .size() se le resta 1 (ver comentario linea 113)
                         votos = alumnos.get(aleatorio).getCantVotos();
                         votos++;
                         alumnos.get(aleatorio).setCantVotos(votos);
@@ -124,16 +125,17 @@ public class Simulador {
                 bandera = false;
             }
             alumnosVotados.remove(alumno);
-            votosAlumno.put(alumno, alumnosVotados);
+            listaVotos = new ArrayList<>(alumnosVotados);
+            voto.setListaVotos(listaVotos);
+            votosAlumno.add(voto);
         }
         return votosAlumno;
     }
-
-    public static void mostrarVotos(HashMap<Alumno, HashSet<Alumno>> listaVotos) {
-
-        for (Map.Entry<Alumno, HashSet<Alumno>> entry : listaVotos.entrySet()) {
-            System.out.println("El alumno/a " + entry.getKey().getNombreCompleto() + " obtuvo " + entry.getKey().getCantVotos() + " votos de sus compañeros. Sus votos fueron para: ");
-            for (Alumno alumno : entry.getValue()) {
+    
+    public static void mostrarVotos(ArrayList<Voto> listaVotos) {
+        for (Voto aux : listaVotos) {
+            System.out.println("El alumno/a " + aux.getAlumno().getNombreCompleto() + " obtuvo " + aux.getAlumno().getCantVotos() + " votos de sus compañeros. Sus votos fueron para: ");
+            for (Alumno alumno : aux.getListaVotos()) {
                 System.out.println(alumno.getNombreCompleto());
             }
             System.out.println("");
